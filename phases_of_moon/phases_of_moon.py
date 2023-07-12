@@ -35,7 +35,7 @@ def Run(b):
     if running: b.text = "Pause"
     else: b.text = "Run"
     
-button(text="Pause", pos=c1.title_anchor, bind=Run)
+button(text="Pause", pos=canvas_1.title_anchor, bind=Run)
 
 i = 0.0
 while True:
