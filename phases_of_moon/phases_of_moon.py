@@ -27,11 +27,22 @@ canvas_2.align='right'
 moon1 = sphere(canvas = canvas_2, radius = 1, texture = 'moon.jpg',shininess=0)
 lamp = local_light(canvas = canvas_2, pos = vector(0,0,0), color = color.white)
 
+running = True
+
+def Run(b):
+    global running
+    running = not running
+    if running: b.text = "Pause"
+    else: b.text = "Run"
+    
+button(text="Pause", pos=c1.title_anchor, bind=Run)
+
 i = 0.0
 while True:
     rate(10)
-    moon.pos.x = 5*np.sin(i)
-    moon.pos.y = 5*np.cos(i)
-    lamp.pos.z = 500*np.cos(i-np.pi/2)
-    lamp.pos.x = 500*np.sin(i-np.pi/2)
-    i = i + 0.01
+    if running:
+        moon.pos.x = 5*np.sin(i)
+        moon.pos.y = 5*np.cos(i)
+        lamp.pos.z = 500*np.cos(i-np.pi/2)
+        lamp.pos.x = 500*np.sin(i-np.pi/2)
+        i = i + 0.01
